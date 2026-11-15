@@ -1,0 +1,9 @@
+{
+  "note": "Shared by dev/top-edge.html (draws these) and dev/measure-top-edge.mjs (measures them). CSS px = screen points.",
+  "probeSize": 12,
+  "columns": [104, 374],
+  "rows": [6, 22, 38, 54, 70, 86, 102, 130, 170],
+  "referenceRow": 420,
+  "barSamples": [[20, 50], [120, 50], [290, 50], [390, 50]],
+  "swatch": [200, 420]
+}
