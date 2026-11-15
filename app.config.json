@@ -1,0 +1,8 @@
+{
+  "name": "Hello PWA",
+  "shortName": "Hello",
+  "accent": "#3b6cff",
+  "pageLight": "#f5f5f5",
+  "pageDark": "#111111",
+  "icon": "icons/source.svg"
+}

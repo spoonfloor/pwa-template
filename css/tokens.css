@@ -1,0 +1,33 @@
+/* Between these markers is written by dev/configure.mjs from app.config.json. Edit there. */
+/* config */
+:root {
+  --config-accent: #3b6cff;
+  --config-page-light: #f5f5f5;
+  --config-page-dark: #111111;
+}
+/* /config */
+
+/* Design tokens. Light is the default; dark overrides only what changes. */
+:root {
+  color-scheme: light dark;
+
+  --page-color: var(--config-page-light);
+  --surface-color: color-mix(in srgb, var(--page-color), black 6%); /* cards, sheets */
+  --text-color: #171717;
+  --text-muted: #525252;
+  --accent-color: var(--config-accent);
+  --accent-text-color: white;
+
+  --radius: 12px;
+  --content-width: min(340px, calc(100vw - 32px));
+  --font: "Inter", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-color: var(--config-page-dark);
+    --surface-color: color-mix(in srgb, var(--page-color), white 10%);
+    --text-color: #eeeeee;
+    --text-muted: #a3a3a3;
+  }
+}

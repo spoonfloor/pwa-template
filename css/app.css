@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; background: var(--page-color); color: var(--text-color);
+  font-family: var(--font); -webkit-font-smoothing: antialiased; }
+/* No rubber-band bounce revealing blank space past the page edges. */
+body { overscroll-behavior: none; }
+
+/* Fills the visible screen. 100dvh follows Safari’s collapsing toolbars (100vh overshoots
+   them). The padding keeps content clear of the notch, Dynamic Island and home indicator,
+   which the page draws under because of viewport-fit=cover. */
+main { box-sizing: border-box; min-height: 100dvh; display: grid; place-items: center;
+  padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right))
+           env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left)); }
+
+/* A solid strip under the status bar. iOS 26 takes a fixed, opaque element at the top
+   edge as the app’s own bar and fills the status bar with its color; without one it
+   blurs whatever page content scrolls there. Zero height in the browser (no inset). */
+#top-bar { position: fixed; z-index: 1; top: 0; left: 0; right: 0;
+  height: env(safe-area-inset-top); background: var(--page-color); }
+
+#hello { width: var(--content-width); box-sizing: border-box; padding: 16px 20px; border: 0;
+  border-radius: var(--radius); background: var(--accent-color); color: var(--accent-text-color);
+  font: inherit; font-size: 22px; font-weight: 500; cursor: pointer;
+  transition: transform 80ms ease-out; }
+#hello:active { transform: scale(0.97); }
+#hello:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
+
+/* Tappable controls: no double-tap zoom delay, no long-press callout or text selection. */
+button { touch-action: manipulation; -webkit-touch-callout: none;
+  -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+
+/* Text fields under 16px make iOS zoom in on focus. */
+input, select, textarea { font-size: max(16px, 1em); }
