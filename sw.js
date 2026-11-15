@@ -35,8 +35,12 @@ self.addEventListener("fetch", event => {
   // Leave other sites, non-GET requests and the dev server’s /__livereload alone.
   if (request.method !== "GET" || url.origin !== location.origin || url.pathname.startsWith("/__")) return;
 
+  // cache: "no-cache" makes the browser check with the server instead of reusing its own
+  // HTTP cache (GitHub Pages allows 10 minutes). Without it, right after a deploy, an old
+  // index.html could load alongside a new app.js. A fresh Request because a navigation
+  // request can’t be copied with new options.
   event.respondWith(
-    fetch(request)
+    fetch(new Request(request.url, { cache: "no-cache" }))
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
