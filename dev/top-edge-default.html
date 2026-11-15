@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- dev/top-edge.html with one change: the “default” status bar style instead of
+     “black-translucent”. Install both to the Home Screen and compare the same variant. -->
+<title>Top edge test (default)</title>
+<meta name="apple-mobile-web-app-title" content="Top default">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="top-edge-default.webmanifest">
+<link rel="apple-touch-icon" href="../icons/apple-touch-icon.png">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/app.css">
+<link rel="stylesheet" href="top-edge.css">
+<script type="module" src="top-edge.js"></script>
+</head>
+<body>
+<div id="top-bar"></div>
+<div id="inset"></div>
+<div id="panel"><p id="info"></p><div class="grid" id="variants"></div></div>
+</body>
+</html>

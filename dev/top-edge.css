@@ -1,0 +1,25 @@
+/* Shared by dev/top-edge.html and dev/top-edge-default.html. */
+
+/* Hard-edged stripes to scroll under the top band, so blur there is easy to see. */
+body { min-height: 400vh;
+  background: repeating-linear-gradient(var(--page-color) 0 20px, var(--text-color) 20px 24px); }
+
+/* Variants, set from the URL by top-edge.js. */
+:root { --bar-color: var(--page-color); }
+:root[data-color="accent"] { --bar-color: var(--accent-color); }
+#top-bar { background: var(--bar-color); }
+:root[data-bar="tall"] #top-bar { height: calc(env(safe-area-inset-top) + 56px); }
+:root[data-bar="none"] #top-bar { display: none; }
+
+.probe { position: fixed; z-index: 2; background: repeating-conic-gradient(#000 0 25%, #fff 0 50%) 0 0 / 2px 2px; }
+.swatch { position: fixed; z-index: 2; background: var(--bar-color); }
+#inset { position: fixed; top: 0; height: env(safe-area-inset-top); visibility: hidden; }
+
+#panel { position: fixed; z-index: 3; left: 0; right: 0; bottom: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--surface-color); font-size: 13px; line-height: 1.4; }
+#panel p { margin: 0 0 8px; }
+#panel .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+#panel a { display: block; padding: 8px 4px; border-radius: 8px; text-align: center;
+  background: var(--page-color); color: var(--text-color); text-decoration: none; }
+#panel a[aria-current] { background: var(--accent-color); color: var(--accent-text-color); }
