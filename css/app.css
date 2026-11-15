@@ -12,18 +12,23 @@ html, body { margin: 0; background: var(--page-color); color: var(--text-color);
 /* No rubber-band bounce revealing blank space past the page edges. */
 body { overscroll-behavior: none; }
 
-/* Fills the visible screen. 100dvh follows Safari’s collapsing toolbars (100vh overshoots
-   them). The padding keeps content clear of the notch, Dynamic Island and home indicator,
-   which the page draws under because of viewport-fit=cover. */
+/* Fills the visible screen below the top bar. 100dvh follows Safari’s collapsing toolbars
+   (100vh overshoots them). The safe-area padding keeps content clear of the notch,
+   Dynamic Island and home indicator wherever the page draws under them
+   (viewport-fit=cover; in landscape, for example). */
 main { box-sizing: border-box; min-height: 100dvh; display: grid; place-items: center;
-  padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right))
+  padding: calc(env(safe-area-inset-top) + var(--top-bar-height)) max(16px, env(safe-area-inset-right))
            env(safe-area-inset-bottom) max(16px, env(safe-area-inset-left)); }
 
-/* A solid strip under the status bar. iOS 26 takes a fixed, opaque element at the top
-   edge as the app’s own bar and fills the status bar with its color; without one it
-   blurs whatever page content scrolls there. Zero height in the browser (no inset). */
-#top-bar { position: fixed; z-index: 1; top: 0; left: 0; right: 0;
-  height: env(safe-area-inset-top); background: var(--page-color); }
+/* The app’s top bar. Keep it fixed, full width, opaque and over 10px tall: iOS then
+   paints the status bar in its color, and on iOS 27 that’s also what stops iOS blurring
+   the top of a Home Screen app. Any color works, the page color included. (WebKit’s
+   LocalFrameView::fixedContainerEdges: fixed or sticky, ≥90% of the width, >10px, not
+   transparent.) Controls go inside it. */
+#top-bar { position: fixed; z-index: 1; top: 0; left: 0; right: 0; box-sizing: border-box;
+  height: calc(env(safe-area-inset-top) + var(--top-bar-height));
+  padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right)) 0 max(16px, env(safe-area-inset-left));
+  display: flex; align-items: center; background: var(--page-color); }
 
 #hello { width: var(--content-width); box-sizing: border-box; padding: 16px 20px; border: 0;
   border-radius: var(--radius); background: var(--accent-color); color: var(--accent-text-color);

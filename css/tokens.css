@@ -19,6 +19,7 @@
   --accent-text-color: white;
 
   --radius: 12px;
+  --top-bar-height: 44px; /* must stay over 10px, see #top-bar in app.css */
   --content-width: min(340px, calc(100vw - 32px));
   --font: "Inter", system-ui, sans-serif;
 }

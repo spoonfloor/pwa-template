@@ -38,6 +38,7 @@ Blocks marked `config` in `index.html`, `css/tokens.css` and `sw.js`, and all of
 
 - **Offline.** `sw.js` goes to the network first and falls back to the last saved copy, so online you never see a stale file. Add any new file to its `SHELL` list so it’s available offline from the first visit; `configure` warns about entries that don’t exist.
 - **Testing on a real iPhone.** Service workers only run over HTTPS (localhost is the exception), and the dev server only listens on this Mac. To try Home Screen install and offline on a phone, host the folder somewhere with HTTPS, such as GitHub Pages or Netlify.
-- **Status bar.** The installed app draws under the status bar. `#top-bar` in `app.css` gives iOS a solid color to show there; keep it if you add your own header.
+- **Top bar and status bar.** `#top-bar` is the app’s header: put the title and top controls inside it. iOS paints the status bar in its color, and on iOS 27 that’s also what stops iOS blurring the top of a Home Screen app. Keep it fixed, full width, opaque (any color) and over 10px tall. Don’t add `apple-mobile-web-app-status-bar-style`: on iOS 27 `black-translucent` brings the blur back. `dev/top-edge.html` and `dev/top-edge-default.html` test this on a phone.
+- **Reinstall after `<head>` changes.** iOS reads the Home Screen settings when the app is added, so after changing them, delete the app and add it again.
 - **Text fields** need a font size of at least 16px, or iOS zooms in when they’re focused. `app.css` sets that.
 - **Icons.** Keep a full-bleed `<rect id="bg">` as the first shape in `source.svg`. Only the browser-tab favicon gets rounded corners; iOS rounds Home Screen icons itself.

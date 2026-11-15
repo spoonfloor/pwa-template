@@ -6,10 +6,11 @@
 <!-- Test page: does iOS blur or tint things near the top of the screen?
      Draws black-and-white checker “probes” at fixed spots from the status bar down, plus
      the same probe mid-screen as a reference. dev/measure-top-edge.mjs compares them in a
-     screenshot: identical pixels mean no blur and no overlay. Same <head> setup and CSS as
-     the template, so it tests the real thing. Add it to the Home Screen to test app mode.
-     dev/top-edge-default.html is the same page with the “default” status bar style; iOS
-     reads that style at launch, so each needs its own Home Screen install. -->
+     screenshot: identical pixels mean no blur and no overlay. Uses the template’s CSS, so it
+     tests the real #top-bar. Add it to the Home Screen to test app mode.
+     This copy keeps the old “black-translucent” status bar as the before case: on iOS 27
+     it blurs even with a qualifying bar. dev/top-edge-default.html is the after case;
+     iOS reads the style at launch, so each needs its own Home Screen install. -->
 <title>Top edge test</title>
 <meta name="apple-mobile-web-app-title" content="Top edge">
 <meta name="mobile-web-app-capable" content="yes">

@@ -1,7 +1,7 @@
 // Shared by dev/top-edge.html and dev/top-edge-default.html: draws the probes, applies the
 // variant from the URL, and shows what’s being tested.
 const params = new URLSearchParams(location.search);
-const bar = params.get("bar") ?? "strip";     // none | strip (the template) | tall (strip + 56px, like random-restaurant)
+const bar = params.get("bar") ?? "strip";     // none | strip (the template’s #top-bar as is) | tall (safe area + 56px)
 const color = params.get("color") ?? "page";  // page | accent (a colored header)
 const scroll = params.get("scroll") ?? "top"; // top | under (stripes scrolled under the band)
 Object.assign(document.documentElement.dataset, { bar, color });
